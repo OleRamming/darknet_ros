@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<launch>
+  <!-- Launch Gazebo Environment with Robot as configured in mybot_world.launch-->
+  <include file="$(find mybot_gazebo)/launch/mybot_world.launch">
+  </include>
+
+  <node name="image_preprocessor" pkg="image_preprocessor" type="image_preprocessor_node" output="screen">
+  </node>
+ 
+  <!-- Use YOLOv3 -->
+  <arg name="network_param_file"         default="$(find darknet_ros)/config/yolov3.yaml"/>
+  <!--<arg name="image" default="camera/rgb/image_raw" /> -->
+  <arg name="image" default="/yolo_input"/>
+
+
+  <!-- Include main launch file -->
+  <include file="$(find darknet_ros)/launch/darknet_ros.launch">
+    <arg name="network_param_file"    value="$(arg network_param_file)"/>
+    <arg name="image" value="$(arg image)" />
+  </include>
+
+</launch>

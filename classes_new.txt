@@ -1,0 +1,12 @@
+person
+chair
+table
+door
+window
+cat
+dog
+filing cabinet / drawer
+stairs (?)
+office chair
+bed (?)
+water cooler (?)
